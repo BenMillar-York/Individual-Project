@@ -1,0 +1,19 @@
+{
+  "name": "individual-project",
+  "version": "1.0.0",
+  "description": "BEng Individual Project 2022/23",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenMillar-York/Individual-Project.git"
+  },
+  "author": "Ben Millar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BenMillar-York/Individual-Project/issues"
+  },
+  "homepage": "https://github.com/BenMillar-York/Individual-Project#readme"
+}

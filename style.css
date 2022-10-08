@@ -1,0 +1,23 @@
+canvas {
+    display:flex;
+}
+
+body {
+    background-color: #000000;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-menu {
+    display: flex;
+    flex-direction: row;
+    padding-left: 3vw;
+    color: white;
+    margin: 0.4vh;
+}
+
+p {
+    margin: 0px;
+}
