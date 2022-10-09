@@ -1,5 +1,6 @@
 const colours = {
-    waveform: "#00ff00",
+    waveform1: "#00ff00",
+    waveform2: "#0000ff",
     axes: "#ffffff"
 }
 
@@ -22,27 +23,35 @@ function showAxes(ctx) {
     ctx.stroke();
 }
 
-function sineWave(wave_velocity, omega, x, time) {
-
-    let phaseAngle = document.getElementById('phase').value;
+function sineWave(omega, x, time, phaseAngle) {
 
     return Math.sin(-x*omega - time - phaseAngle);
 }
 
-function plotFunction(ctx, time) {
+function plotFunction(ctx, time, waveNumber) {
     var width = ctx.canvas.width;
     var height = ctx.canvas.height;
     
-    ctx.strokeStyle = colours.waveform;
+    if (waveNumber == 1) {
+        ctx.strokeStyle = colours.waveform1;
+        amplitude = document.getElementById("wave1-amplitude").value;
+        frequency = document.getElementById("wave1-frequency").value;
+        phaseAngle = document.getElementById('wave1-phase').value;
+    }
+    if (waveNumber == 2){
+        ctx.strokeStyle = colours.waveform2;
+        amplitude = document.getElementById("wave2-amplitude").value;
+        frequency = document.getElementById("wave2-frequency").value;
+        phaseAngle = document.getElementById('wave2-phase').value;
+    }
+    
     
     var y = 0;
-    var amplitude = document.getElementById("amplitude").value;
-    var frequency = document.getElementById("frequency").value;
     ctx.beginPath();
     for (let x = 0; x < width; x++) {
         omega = 2*Math.PI*frequency
 
-        y = amplitude *  sineWave(wave_velocity, omega, x-width/2, time*frequency);
+        y = amplitude *  sineWave(omega, x-width/2, time*frequency, phaseAngle);
 
         ctx.lineTo(x, y + (height/2));
     }
@@ -61,16 +70,25 @@ function drawFrame() {
     showAxes(context);
     context.save();
     
-    wave_velocity = document.querySelector('input[name="wave_velocity"]:checked')?.value;
+    wave1_velocity = document.querySelector('input[name="wave1_velocity"]:checked')?.value;
+    wave2_velocity = document.querySelector('input[name="wave2_velocity"]:checked')?.value;
     
-    if (wave_velocity == "forward"){
-        time += 3;
+    if (wave1_velocity == "forward"){
+        wave1_time += 3;
     }
-    if (wave_velocity == "reverse"){
-        time -= 3;
+    if (wave1_velocity == "reverse"){
+        wave1_time -= 3;
     }
 
-    plotFunction(context, time);
+    if (wave2_velocity == "forward"){
+        wave2_time += 3;
+    }
+    if (wave2_velocity == "reverse"){
+        wave2_time -= 3;
+    }
+
+    plotFunction(context, wave1_time, 1);
+    plotFunction(context, wave2_time, 2);
 
     initArgand();
 
@@ -85,4 +103,5 @@ function init() {
     window.requestAnimationFrame(drawFrame);
 }
 
-var time = 0;
+var wave1_time = 0;
+var wave2_time = 0;

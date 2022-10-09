@@ -1,6 +1,20 @@
 function onArgandClick(event) {
     var rect = event.target.getBoundingClientRect();
 
+    let phaseSlider, amplitudeSlider = null
+
+    if (event.target.id == "wave1-argand"){
+        phaseSlider = document.getElementById("wave1-phase");
+        amplitudeSlider = document.getElementById("wave1-amplitude")
+        colour = 'green';
+    }
+    if (event.target.id == "wave2-argand"){
+        phaseSlider = document.getElementById("wave2-phase");
+        amplitudeSlider = document.getElementById("wave2-amplitude")
+        colour = 'blue';
+    }
+
+
     var ctx = event.target.getContext("2d");
 
     var width = ctx.canvas.width;
@@ -13,7 +27,7 @@ function onArgandClick(event) {
     mouseY = event.clientY;
 
     ctx.beginPath();
-    ctx.strokeStyle = "green";
+    ctx.strokeStyle = colour;
 
 
     relativeMouseX = (mouseX - rect.left) / ( rect.right - rect.left) - 0.5
@@ -22,7 +36,7 @@ function onArgandClick(event) {
 
     ctx.arc(width/2+relativeMouseX*width, height/2-relativeMouseY*height, 5, 0, 2 * Math.PI);
 
-    ctx.fillStyle = 'green';
+    ctx.fillStyle = colour;
 
     ctx.setLineDash([10, 10]);
     ctx.moveTo(width/2+relativeMouseX*width, height/2-relativeMouseY*height);
@@ -46,31 +60,33 @@ function onArgandClick(event) {
             phaseAngle = Math.atan(relativeMouseY/relativeMouseX)
         } else {
             ctx.arc(width/2, height/2, 20, 0, Math.atan(-relativeMouseY/relativeMouseX), true);
-            document.getElementById("phase").value = Math.atan(-relativeMouseY/relativeMouseX);
+            phaseSlider.value = Math.atan(-relativeMouseY/relativeMouseX);
             phaseAngle = Math.atan(relativeMouseY/relativeMouseX)+2*Math.PI
         }
 
     }
     if (relativeMouseX<0) {
         ctx.arc(width/2, height/2, 20, 0, Math.atan(-relativeMouseY/relativeMouseX)-Math.PI, true);
-        document.getElementById("phase").value = Math.atan(-relativeMouseY/relativeMouseX)-Math.PI;
+        phaseSlider.value = Math.atan(-relativeMouseY/relativeMouseX)-Math.PI;
         phaseAngle = Math.atan(relativeMouseY/relativeMouseX)+Math.PI
     }
 
-    document.getElementById("phase").value = phaseAngle;
+    phaseSlider.value = phaseAngle;
     
     ctx.stroke();
     ctx.save();
 
-    document.getElementById("amplitude").value = Math.hypot(relativeMouseX, relativeMouseY) * 80
+    amplitudeSlider.value = Math.hypot(relativeMouseX, relativeMouseY) * 80
 }
 
 function drawArgand(ctx) {
     ctx.beginPath();
+
     ctx.strokeStyle = "rgb(128,128,128)";
 
     var width = ctx.canvas.width;
     var height = ctx.canvas.height;
+    ctx.setLineDash([]);
 
     // X-Axis
     ctx.moveTo(0, height/2);
@@ -90,15 +106,25 @@ function drawArgand(ctx) {
 
     ctx.lineWidth = 1;
     ctx.stroke();
+
+    ctx.beginPath();
+    // Dotted circle
+    ctx.arc(width/2, height/2, 130, 0, 2*Math.PI, true);
+    ctx.setLineDash([10, 10]);
+    ctx.stroke();
     ctx.save();
 }
 
 
 function initArgand() {
-    var argand = document.getElementById("argand");
-    var ctx = argand.getContext("2d");
-    drawArgand(ctx);
+    var argand1 = document.getElementById("wave1-argand");
+    var argand2 = document.getElementById("wave2-argand");
+    var ctx1 = argand1.getContext("2d");
+    var ctx2 = argand2.getContext("2d");
+    drawArgand(ctx1);
+    drawArgand(ctx2);
 
-    argand.addEventListener('mousedown', onArgandClick, false);
+    argand1.addEventListener('mousedown', onArgandClick, false);
+    argand2.addEventListener('mousedown', onArgandClick, false);
 
 }

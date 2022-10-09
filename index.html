@@ -15,31 +15,65 @@
     <canvas id="canvas"></canvas>
 
     <div class="lower">
+    <div class="wave-menu">
     <div class="menu">
+        <h3>Wave 1 </h3>
         <div class="input-menu">
-            <input type="radio" id="stationary" name="wave_velocity" value="stationary" checked>
+            <input type="radio" id="stationary" name="wave1_velocity" value="stationary" checked>
             <label for="sin">Stationary</label><br>
-            <input type="radio" id="forward" name="wave_velocity" value="forward">
+            <input type="radio" id="forward" name="wave1_velocity" value="forward">
             <label for="cos">Forward</label><br>
-            <input type="radio" id="reverse" name="wave_velocity" value="reverse">
+            <input type="radio" id="reverse" name="wave1_velocity" value="reverse">
             <label for="tan">Reverse</label>
         </div>
 
         <div class="input-menu">
             <p>Amplitude: </p>
-            <input type="range" min="1" max="100" value="50" class="slider" id="amplitude">
+            <input type="range" min="1" max="100" value="50" class="slider" id="wave1-amplitude">
         </div>
         <div class="input-menu">
             <p>Phase: </p>
-            <input type="range" min="0" max="6.2831" value="0" class="slider" id="phase" step="0.001">
+            <input type="range" min="0" max="6.2831" value="0" class="slider" id="wave1-phase" step="0.001">
         </div>
         <div class="input-menu">
             <p>Frequency: </p>
-            <input type="range" min="0.001" max="0.05" value="0.005" step="0.0000001" class="slider" id="frequency">
+            <input type="range" min="0.001" max="0.05" value="0.005" step="0.0000001" class="slider" id="wave1-frequency">
         </div>
     </div>
 
-    <canvas id="argand" height="300", width="300"></canvas>
+    <canvas id="wave1-argand" height="300", width="300"></canvas>
     </div>
+
+    <div class="wave-menu">
+        <div class="menu">
+            <h3>Wave 2 </h3>
+            <div class="input-menu">
+                <input type="radio" id="stationary" name="wave2_velocity" value="stationary" checked>
+                <label for="sin">Stationary</label><br>
+                <input type="radio" id="forward" name="wave2_velocity" value="forward">
+                <label for="cos">Forward</label><br>
+                <input type="radio" id="reverse" name="wave2_velocity" value="reverse">
+                <label for="tan">Reverse</label>
+            </div>
+    
+            <div class="input-menu">
+                <p>Amplitude: </p>
+                <input type="range" min="1" max="100" value="50" class="slider" id="wave2-amplitude">
+            </div>
+            <div class="input-menu">
+                <p>Phase: </p>
+                <input type="range" min="0" max="6.2831" value="0" class="slider" id="wave2-phase" step="0.001">
+            </div>
+            <div class="input-menu">
+                <p>Frequency: </p>
+                <input type="range" min="0.001" max="0.05" value="0.005" step="0.0000001" class="slider" id="wave2-frequency">
+            </div>
+        </div>
+    
+        <canvas id="wave2-argand" height="300", width="300"></canvas>
+        </div>
+    </div>
+
+    
 </body>
 </html>

@@ -13,7 +13,6 @@ body {
 .input-menu {
     display: flex;
     flex-direction: row;
-    padding-left: 3vw;
     color: white;
     margin: 0.4vh;
 }
@@ -25,9 +24,20 @@ p {
 .menu {
     display: flex;
     flex-direction: column;
+    padding-left: 3vw;
 }
 
 .lower {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+}
+
+.wave-menu {
+    display: flex;
+    flex-direction: row;
+}
+
+h3 {
+    color: white;
 }
