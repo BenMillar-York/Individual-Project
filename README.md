@@ -1,7 +1,7 @@
 # Individual-Project
 ## DAJP1-9-2022: On-line teaching simulation / visualisation
 
-![Waveform](waveform.png)
+![Waveform](img/waveform.png)
 
 View the simulation [here](https://benmillar-york.github.io/Individual-Project/).
 
@@ -13,6 +13,10 @@ This project is currently a simple prototype designed for me to test the followi
 This concept was decided upon as regardless of the specific simulation chosen it will be required to dynamically draw content on a canvas.
 
 # Changlog
+## [0.7.1] - 2022/10/09
+- Fixed issue with misaligned summation menu
+- Fixed issue with no default selected for wave 2 direction
+- Moved waveform image
 ## [0.7.0] - 2022/10/09
 ### Added
 - Merged argand diagrams into one,
