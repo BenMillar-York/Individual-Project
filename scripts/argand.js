@@ -28,6 +28,7 @@ function onArgandClick(event) {
 
     ctx.beginPath();
     ctx.strokeStyle = colour;
+    ctx.lineWidth = 3;
 
 
     relativeMouseX = (mouseX - rect.left) / ( rect.right - rect.left) - 0.5
@@ -76,7 +77,7 @@ function onArgandClick(event) {
     ctx.stroke();
     ctx.save();
 
-    amplitudeSlider.value = Math.hypot(relativeMouseX, relativeMouseY) * 80
+    amplitudeSlider.value = Math.hypot(relativeMouseX, relativeMouseY) * 200
 }
 
 function drawArgand(ctx) {
@@ -98,7 +99,7 @@ function drawArgand(ctx) {
 
     // Text
     ctx.fillStyle = "white";
-    ctx.font = "20px Helvetica";
+    ctx.font = "20px Segoe UI";
     ctx.fillText("j", width/2-10, 15);
     ctx.fillText("- j", width/2-22, height-6);
     ctx.fillText("1", width-15, height/2-5);

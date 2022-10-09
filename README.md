@@ -9,6 +9,11 @@ This project is currently a simple prototype designed for me to test the followi
 This concept was decided upon as regardless of the specific simulation chosen it will be required to dynamically draw content on a canvas.
 
 # Changlog
+## [0.5.0] - 2022/10/09
+## Added
+- Summation waveform.
+## Fixed
+- Issue where radio button label text couldn't be interacted with.
 ## [0.4.0] - 2022/10/09
 ### Added
 - Second waveform

@@ -25,6 +25,7 @@ p {
     display: flex;
     flex-direction: column;
     padding-left: 3vw;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .lower {
@@ -41,3 +42,4 @@ p {
 h3 {
     color: white;
 }
+

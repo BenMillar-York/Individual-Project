@@ -24,13 +24,14 @@ function showAxes(ctx) {
 }
 
 function sineWave(omega, x, time, phaseAngle) {
-
-    return Math.sin(-x*omega - time - phaseAngle);
+    return Math.sin(x*omega - time - phaseAngle);
 }
 
 function plotFunction(ctx, time, waveNumber) {
     var width = ctx.canvas.width;
     var height = ctx.canvas.height;
+
+    ctx.lineWidth = 2;
     
     if (waveNumber == 1) {
         ctx.strokeStyle = colours.waveform1;
@@ -51,13 +52,47 @@ function plotFunction(ctx, time, waveNumber) {
     for (let x = 0; x < width; x++) {
         omega = 2*Math.PI*frequency
 
-        y = amplitude *  sineWave(omega, x-width/2, time*frequency, phaseAngle);
+        y = - amplitude *  sineWave(omega, x-width/2, time*frequency, phaseAngle);
 
         ctx.lineTo(x, y + (height/2));
     }
     ctx.stroke();
     ctx.save();
 
+}
+
+function plotSummation(ctx, time1, time2) {
+    var width = ctx.canvas.width;
+    var height = ctx.canvas.height;
+
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = "#f58f02";
+    ctx.setLineDash([15, 20]);
+
+    frequency1 = document.getElementById("wave1-frequency").value;
+    frequency2 = document.getElementById("wave2-frequency").value;
+
+    amplitude1 = document.getElementById("wave1-amplitude").value;
+    amplitude2 = document.getElementById("wave2-amplitude").value;
+
+    phaseAngle1 = document.getElementById('wave1-phase').value;
+    phaseAngle2 = document.getElementById('wave2-phase').value;
+    
+    var y = 0;
+    ctx.beginPath();
+    for (let x = 0; x < width; x++) {
+        omega1 = 2*Math.PI*frequency1
+        omega2 = 2*Math.PI*frequency2
+
+        wave1 = amplitude1 *  sineWave(omega1, x-width/2, time1*frequency1, phaseAngle1)
+        wave2 = amplitude2 *  sineWave(omega2, x-width/2, time2*frequency2, phaseAngle2)
+
+        y = - (wave1 + wave2);
+
+        ctx.lineTo(x, y + (height/2));
+    }
+    ctx.stroke();
+    ctx.save();
 }
 
 function drawFrame() {
@@ -70,25 +105,38 @@ function drawFrame() {
     showAxes(context);
     context.save();
     
-    wave1_velocity = document.querySelector('input[name="wave1_velocity"]:checked')?.value;
-    wave2_velocity = document.querySelector('input[name="wave2_velocity"]:checked')?.value;
+    wave1_direction = document.querySelector('input[name="wave1_direction"]:checked')?.value;
+    wave2_direction = document.querySelector('input[name="wave2_direction"]:checked')?.value;
+
+    let wave1_velocity, wave2_velocity = 3;
+    wave1_velocity = parseInt(document.getElementById('wave1-velocity').value);
+    wave2_velocity = parseInt(document.getElementById('wave2-velocity').value);
+
+    console.log(wave1_direction)
     
-    if (wave1_velocity == "forward"){
-        wave1_time += 3;
+    if (wave1_direction == "forward"){
+        wave1_time += wave1_velocity;
     }
-    if (wave1_velocity == "reverse"){
-        wave1_time -= 3;
+    if (wave1_direction == "reverse"){
+        wave1_time -= wave1_velocity;
+    }
+    if (wave1_direction == "stationary"){
+        wave1_time = 0;
     }
 
-    if (wave2_velocity == "forward"){
-        wave2_time += 3;
+    if (wave2_direction == "forward"){
+        wave2_time += wave2_velocity;
     }
-    if (wave2_velocity == "reverse"){
-        wave2_time -= 3;
+    if (wave2_direction == "reverse"){
+        wave2_time -= wave2_velocity;
+    }
+    if (wave2_direction == "stationary"){
+        wave2_time = 0;
     }
 
     plotFunction(context, wave1_time, 1);
     plotFunction(context, wave2_time, 2);
+    plotSummation(context, wave1_time, wave2_time);
 
     initArgand();
 
