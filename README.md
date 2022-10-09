@@ -1,7 +1,7 @@
 # Individual-Project
 ## DAJP1-9-2022: On-line teaching simulation / visualisation
 
-![Waveform](img/waveform.png)
+![Waveform](waveform.png)
 
 This project is currently a simple prototype designed for me to test the following:
 - Drawing an oscilloscope esque diagram on a HTML Canvas with moving sineusodial waves
