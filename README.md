@@ -9,9 +9,17 @@ This project is currently a simple prototype designed for me to test the followi
 This concept was decided upon as regardless of the specific simulation chosen it will be required to dynamically draw content on a canvas.
 
 # Changlog
+## [0.6.0] - 2022/10/09
+### Added
+- Added summation menu
+
+### Known Issues
+- Summation menu is not aligned with the above wave menu.
+
 ## [0.5.2] - 2022/10/09
-- Fixed issue where angle arc was not showing.
-- Fixed draw order on the argand diagram.
+### Fixed
+- Issue where angle arc was not showing.
+- Draw order on the argand diagram.
 ## [0.5.1] - 2022/10/09
 ### Fixed
 - Argand diagram will now update when the sliders do.
