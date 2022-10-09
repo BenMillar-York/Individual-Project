@@ -1,6 +1,6 @@
 const amplitude_scaling_factor = 200
 
-function drawArgandPoint(ctx, amplitude, argument, colour, arcAngle) {
+function drawArgandPoint(ctx, amplitude, argument, colour) {
     // Takes in a polar coordinate and draws the point on the argand chart, ctx
 
     var width = ctx.canvas.width;
@@ -32,9 +32,10 @@ function drawArgandPoint(ctx, amplitude, argument, colour, arcAngle) {
     ctx.stroke();
 
     ctx.beginPath();
+    ctx.setLineDash([]);
 
     // Angle arc
-    ctx.arc(width/2, height/2, 20, 0, arcAngle, true);
+    ctx.arc(width/2, height/2, 20, 0, -argument, true);
     ctx.stroke();
     
     
@@ -96,7 +97,7 @@ function onArgandClick(event) {
 
     amplitude = Math.hypot(relativeMouseX, relativeMouseY)
 
-    drawArgandPoint(ctx, amplitude, phaseAngle, colour, arcAngle)
+    drawArgandPoint(ctx, amplitude, phaseAngle, colour)
 
     amplitudeSlider.value = amplitude * amplitude_scaling_factor
     phaseSlider.value = phaseAngle
@@ -119,6 +120,18 @@ function drawArgand(ctx) {
     ctx.moveTo(width/2, 0);
     ctx.lineTo(width/2, height);
 
+    ctx.stroke();
+    ctx.save();
+
+    ctx.beginPath();
+    // Dotted circle
+    ctx.arc(width/2, height/2, 130, 0, 2*Math.PI, true);
+    ctx.setLineDash([10, 10]);
+    ctx.stroke();
+    ctx.save();
+
+    ctx.beginPath();
+
     // Text
     ctx.fillStyle = "white";
     ctx.font = "20px Segoe UI";
@@ -130,12 +143,7 @@ function drawArgand(ctx) {
     ctx.lineWidth = 1;
     ctx.stroke();
 
-    ctx.beginPath();
-    // Dotted circle
-    ctx.arc(width/2, height/2, 130, 0, 2*Math.PI, true);
-    ctx.setLineDash([10, 10]);
-    ctx.stroke();
-    ctx.save();
+
 }
 
 

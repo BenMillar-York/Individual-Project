@@ -67,7 +67,14 @@ function plotSummation(ctx, time1, time2) {
 
     ctx.lineWidth = 3;
     ctx.strokeStyle = "#f58f02";
-    ctx.setLineDash([15, 20]);
+
+    isSummationDashed= document.getElementById('summation_dashed').checked;
+    if (isSummationDashed) {
+        ctx.setLineDash([15, 20]);
+    } else {
+        ctx.setLineDash([]);
+    }
+    
 
     frequency1 = document.getElementById("wave1-frequency").value;
     frequency2 = document.getElementById("wave2-frequency").value;
@@ -134,7 +141,14 @@ function drawFrame() {
 
     plotFunction(context, wave1_time, 1);
     plotFunction(context, wave2_time, 2);
-    plotSummation(context, wave1_time, wave2_time);
+
+    isSummationEnabled = document.getElementById('summation_enabled').checked;
+
+    if (isSummationEnabled) {
+        plotSummation(context, wave1_time, wave2_time);
+    }
+
+    
 
     initArgand();
 
