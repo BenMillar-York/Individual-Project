@@ -111,8 +111,6 @@ function drawFrame() {
     let wave1_velocity, wave2_velocity = 3;
     wave1_velocity = parseInt(document.getElementById('wave1-velocity').value);
     wave2_velocity = parseInt(document.getElementById('wave2-velocity').value);
-
-    console.log(wave1_direction)
     
     if (wave1_direction == "forward"){
         wave1_time += wave1_velocity;

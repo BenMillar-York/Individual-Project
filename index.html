@@ -30,11 +30,11 @@
 
         <div class="input-menu">
             <p>Amplitude: </p>
-            <input type="range" min="1" max="200" value="50" class="slider" id="wave1-amplitude">
+            <input type="range" min="1" max="200" value="50" class="slider" id="wave1-amplitude" oninput="updateArgand1Point()">
         </div>
         <div class="input-menu">
             <p>Phase: </p>
-            <input type="range" min="0" max="6.2831" value="0" class="slider" id="wave1-phase" step="0.001">
+            <input type="range" min="0" max="6.2831" value="0" class="slider" id="wave1-phase" step="0.001" oninput="updateArgand1Point()">
         </div>
         <div class="input-menu">
             <p>Frequency: </p>
@@ -63,11 +63,11 @@
     
             <div class="input-menu">
                 <p>Amplitude: </p>
-                <input type="range" min="1" max="200" value="50" class="slider" id="wave2-amplitude">
+                <input type="range" min="1" max="200" value="50" class="slider" id="wave2-amplitude" oninput="updateArgand2Point()">
             </div>
             <div class="input-menu">
                 <p>Phase: </p>
-                <input type="range" min="0" max="6.2831" value="0" class="slider" id="wave2-phase" step="0.001">
+                <input type="range" min="0" max="6.2831" value="0" class="slider" id="wave2-phase" step="0.001" oninput="updateArgand2Point()">
             </div>
             <div class="input-menu">
                 <p>Frequency: </p>
