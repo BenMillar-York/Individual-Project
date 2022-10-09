@@ -26,7 +26,7 @@ function sineWave(wave_velocity, omega, x, time) {
 
     let phaseAngle = document.getElementById('phase').value;
 
-    return Math.sin(x*omega - time - phaseAngle);
+    return Math.sin(-x*omega - time - phaseAngle);
 }
 
 function plotFunction(ctx, time) {
@@ -35,18 +35,16 @@ function plotFunction(ctx, time) {
     
     ctx.strokeStyle = colours.waveform;
     
-    var x = 4;
     var y = 0;
     var amplitude = document.getElementById("amplitude").value;
     var frequency = document.getElementById("frequency").value;
     ctx.beginPath();
-    while (x < width) {
+    for (let x = 0; x < width; x++) {
         omega = 2*Math.PI*frequency
 
-        y = amplitude *  sineWave(wave_velocity, omega, x, time*frequency);
+        y = amplitude *  sineWave(wave_velocity, omega, x-width/2, time*frequency);
 
         ctx.lineTo(x, y + (height/2));
-        x++;
     }
     ctx.stroke();
     ctx.save();

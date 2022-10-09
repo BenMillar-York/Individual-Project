@@ -9,6 +9,9 @@ This project is currently a simple prototype designed for me to test the followi
 This concept was decided upon as regardless of the specific simulation chosen it will be required to dynamically draw content on a canvas.
 
 # Changlog
+## [0.3.1] - 2022/10/09
+### Fixed
+- Issue with incorrect phase angle being displayed on the graph
 ## [0.3.0] - 2022/10/09
 ### Added
 - Argand diagram, allowing the user to select Amplitude and Phase from the graph
