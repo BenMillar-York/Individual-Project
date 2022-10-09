@@ -5,29 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <html translate="no"></html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <script defer src="scripts/graph.js"></script>
+    <script defer src="scripts/argand.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
     <title>Document</title>
 </head>
 <body onload="init()">
     <canvas id="canvas"></canvas>
 
-    <div class="input-menu">
-        <input type="radio" id="sin" name="wave_function" value="sine" checked>
-        <label for="sin">Sine</label><br>
-        <input type="radio" id="cos" name="wave_function" value="cosine">
-        <label for="cos">Cosine</label><br>
-        <input type="radio" id="tan" name="wave_function" value="tangent">
-        <label for="tan">Tangent</label>
+    <div class="lower">
+    <div class="menu">
+        <div class="input-menu">
+            <input type="radio" id="stationary" name="wave_velocity" value="stationary" checked>
+            <label for="sin">Stationary</label><br>
+            <input type="radio" id="forward" name="wave_velocity" value="forward">
+            <label for="cos">Forward</label><br>
+            <input type="radio" id="reverse" name="wave_velocity" value="reverse">
+            <label for="tan">Reverse</label>
+        </div>
+
+        <div class="input-menu">
+            <p>Amplitude: </p>
+            <input type="range" min="1" max="100" value="50" class="slider" id="amplitude">
+        </div>
+        <div class="input-menu">
+            <p>Phase: </p>
+            <input type="range" min="0" max="6.2831" value="0" class="slider" id="phase" step="0.001">
+        </div>
+        <div class="input-menu">
+            <p>Frequency: </p>
+            <input type="range" min="0.001" max="0.05" value="0.005" step="0.0000001" class="slider" id="frequency">
+        </div>
     </div>
 
-    <div class="input-menu">
-        <p>Amplitude: </p>
-        <input type="range" min="1" max="100" value="50" class="slider" id="amplitude">
-    </div>
-    <div class="input-menu">
-        <p>Frequency: </p>
-        <input type="range" min="0.001" max="0.05" value="0.005" step="0.001" class="slider" id="frequency">
+    <canvas id="argand" height="300", width="300"></canvas>
     </div>
 </body>
 </html>

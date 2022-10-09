@@ -22,22 +22,14 @@ function showAxes(ctx) {
     ctx.stroke();
 }
 
-function trigWave(trigOperator, omega, x, time) {
+function sineWave(wave_velocity, omega, x, time) {
 
-    if (trigOperator == "sine") {
-        return Math.sin(x*omega - time);
-    }
+    let phaseAngle = document.getElementById('phase').value;
 
-    if (trigOperator == "cosine") {
-        return Math.cos(x*omega - time);
-    }
-    
-    if (trigOperator == "tangent") {
-        return Math.tan(x*omega - time);
-    }
+    return Math.sin(x*omega - time - phaseAngle);
 }
 
-function plotFunction(ctx, trigOperator, time) {
+function plotFunction(ctx, time) {
     var width = ctx.canvas.width;
     var height = ctx.canvas.height;
     
@@ -46,13 +38,12 @@ function plotFunction(ctx, trigOperator, time) {
     var x = 4;
     var y = 0;
     var amplitude = document.getElementById("amplitude").value;
-    var frequency = document.getElementById("frequency").value;;
-    var timeScale = 0.04;
+    var frequency = document.getElementById("frequency").value;
     ctx.beginPath();
     while (x < width) {
         omega = 2*Math.PI*frequency
 
-        y = amplitude *  trigWave(trigOperator, omega, x, time*timeScale);
+        y = amplitude *  sineWave(wave_velocity, omega, x, time*frequency);
 
         ctx.lineTo(x, y + (height/2));
         x++;
@@ -61,6 +52,7 @@ function plotFunction(ctx, trigOperator, time) {
     ctx.save();
 
 }
+
 function drawFrame() {
     var canvas = document.getElementById("canvas");
     document.getElementById("canvas").width = window.innerWidth;
@@ -69,16 +61,25 @@ function drawFrame() {
 
     context.clearRect(0, 0, canvas.width, canvas.height);
     showAxes(context);
-    context.save();           
+    context.save();
     
-    trigOperator = document.querySelector('input[name="wave_function"]:checked')?.value;
+    wave_velocity = document.querySelector('input[name="wave_velocity"]:checked')?.value;
+    
+    if (wave_velocity == "forward"){
+        time += 3;
+    }
+    if (wave_velocity == "reverse"){
+        time -= 3;
+    }
 
-    console.log(trigOperator)
-    
-    plotFunction(context, trigOperator, time);
+    plotFunction(context, time);
+
+    initArgand();
+
     context.restore();
     
-    time += 1;
+
+
     window.requestAnimationFrame(drawFrame);
 }   
 

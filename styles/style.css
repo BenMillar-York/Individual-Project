@@ -1,4 +1,4 @@
-canvas {
+#canvas {
     display:flex;
 }
 
@@ -20,4 +20,14 @@ body {
 
 p {
     margin: 0px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.lower {
+    display: flex;
+    flex-direction: row;
 }
