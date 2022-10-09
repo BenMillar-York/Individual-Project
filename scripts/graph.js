@@ -148,10 +148,6 @@ function drawFrame() {
         plotSummation(context, wave1_time, wave2_time);
     }
 
-    
-
-    initArgand();
-
     context.restore();
     
 
@@ -160,6 +156,7 @@ function drawFrame() {
 }   
 
 function init() {
+    initArgand();
     window.requestAnimationFrame(drawFrame);
 }
 
