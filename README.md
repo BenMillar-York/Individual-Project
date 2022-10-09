@@ -3,6 +3,8 @@
 
 ![Waveform](waveform.png)
 
+View the simulation [here](https://benmillar-york.github.io/Individual-Project/).
+
 This project is currently a simple prototype designed for me to test the following:
 - Drawing an oscilloscope esque diagram on a HTML Canvas with moving sineusodial waves
 - Allowing the user to interact with an argand diagram to select the sine wave
