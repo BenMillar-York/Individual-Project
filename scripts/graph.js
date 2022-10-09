@@ -25,7 +25,7 @@ function showAxes(ctx) {
 }
 
 function sineWave(omega, x, time, phaseAngle) {
-    return Math.sin(x*omega - time - phaseAngle);
+    return Math.sin(x*omega - time - (2*Math.PI-phaseAngle));
 }
 
 function plotFunction(ctx, time, waveNumber) {
