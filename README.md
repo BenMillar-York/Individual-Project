@@ -6,7 +6,7 @@ This project is currently a simple prototype designed for me to test the followi
 - Allowing the user to interact with an argand diagram to select the sine wave
 - Testing github page hosting for demonstrating progress with this project
 
-This concept was decided upon as regradless of the specific simulation chosen it will be required to dynamically draw content on a canvas.
+This concept was decided upon as regardless of the specific simulation chosen it will be required to dynamically draw content on a canvas.
 
 # Changlog
 ## [0.3.0] - 2022/10/09
