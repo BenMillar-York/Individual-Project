@@ -9,7 +9,7 @@ function drawArgandPoint(ctx, amplitude, argument, colour) {
     ctx.beginPath();
     ctx.strokeStyle = colour;
     ctx.fillStyle = colour;
-    ctx.lineWidth = 3;
+    ctx.lineWidth = 2;
 
     // x = r cos(theta)
     x = amplitude * Math.cos(argument);
@@ -124,8 +124,9 @@ function drawArgand(ctx) {
     ctx.save();
 
     ctx.beginPath();
+
     // Dotted circle
-    ctx.arc(width/2, height/2, 130, 0, 2*Math.PI, true);
+    ctx.arc(width/2, height/2, (width-40)/2, 0, 2*Math.PI, true);
     ctx.setLineDash([10, 10]);
     ctx.stroke();
     ctx.save();
