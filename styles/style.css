@@ -21,6 +21,14 @@ p {
     margin: 0px;
 }
 
+.title {
+    padding-left: 3vw;
+}
+
+h3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .menu {
     display: flex;
     flex-direction: column;

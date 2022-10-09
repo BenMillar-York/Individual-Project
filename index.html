@@ -12,6 +12,7 @@
     <link rel="icon" type="image/png" href="https://www.york.ac.uk/static/stable/img/favicons/android-chrome-192x192.png"/>
 </head>
 <body onload="init()">
+    <div class="title"><h3 style="margin-left:8%">On-line teaching simulation / visualization prototype</h3></div>
     <canvas id="canvas"></canvas>
 
     <div class="gui">
@@ -22,11 +23,11 @@
                 <h3>Wave 1 </h3>
                 <div class="input-menu">
                     
-                    <input type="radio" id="stationary1" name="wave1_direction" value="stationary">
+                    <input type="radio" id="stationary1" name="wave1_direction" value="stationary" class="wave1">
                     <label for="stationary1">Stationary</label><br>
-                    <input type="radio" id="forward1" name="wave1_direction" value="forward" checked>
+                    <input type="radio" id="forward1" name="wave1_direction" value="forward" class="wave1" checked>
                     <label for="forward1">Forward</label><br>
-                    <input type="radio" id="reverse1" name="wave1_direction" value="reverse">
+                    <input type="radio" id="reverse1" name="wave1_direction" value="reverse" class="wave1">
                     <label for="reverse1">Reverse</label>
                 </div>
 
@@ -59,11 +60,11 @@
         <div class="menu">
             <h3>Wave 2 </h3>
             <div class="input-menu">
-                <input type="radio" id="stationary2" name="wave2_direction" value="stationary" checked>
+                <input type="radio" id="stationary2" name="wave2_direction" value="stationary" class="wave2" checked>
                 <label for="stationary2">Stationary</label><br>
-                <input type="radio" id="forward2" name="wave2_direction" value="forward">
+                <input type="radio" id="forward2" name="wave2_direction" value="forward" class="wave2">
                 <label for="forward2">Forward</label><br>
-                <input type="radio" id="reverse2" name="wave2_direction" value="reverse">
+                <input type="radio" id="reverse2" name="wave2_direction" value="reverse" class="wave2">
                 <label for="reverse2">Reverse</label>
             </div>
     

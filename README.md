@@ -1,6 +1,8 @@
 # Individual-Project
 ## DAJP1-9-2022: On-line teaching simulation / visualisation
 
+![Waveform](img/waveform.png)
+
 This project is currently a simple prototype designed for me to test the following:
 - Drawing an oscilloscope esque diagram on a HTML Canvas with moving sineusodial waves
 - Allowing the user to interact with an argand diagram to select the sine wave
@@ -9,6 +11,9 @@ This project is currently a simple prototype designed for me to test the followi
 This concept was decided upon as regardless of the specific simulation chosen it will be required to dynamically draw content on a canvas.
 
 # Changlog
+## [0.6.1] - 2022/10/09
+- Adjusted default waveforms
+- Optimised the code
 ## [0.6.0] - 2022/10/09
 ### Added
 - Added summation menu

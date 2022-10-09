@@ -1,6 +1,7 @@
 const colours = {
-    waveform1: "#00ff00",
-    waveform2: "#0000ff",
+    waveform1: "#238636",
+    waveform2: "#38a6ff",
+    summation: "#EF633F",
     axes: "#ffffff"
 }
 
@@ -66,7 +67,7 @@ function plotSummation(ctx, time1, time2) {
     var height = ctx.canvas.height;
 
     ctx.lineWidth = 3;
-    ctx.strokeStyle = "#f58f02";
+    ctx.strokeStyle = colours.summation;
 
     isSummationDashed= document.getElementById('summation_dashed').checked;
     if (isSummationDashed) {
