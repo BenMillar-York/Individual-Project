@@ -11,6 +11,13 @@ This project is currently a simple prototype designed for me to test the followi
 This concept was decided upon as regardless of the specific simulation chosen it will be required to dynamically draw content on a canvas.
 
 # Changlog
+## [0.7.0] - 2022/10/09
+### Added
+- Merged argand diagrams into one,
+- Added shift click functionalty for second waveform
+## [0.6.2] - 2022/10/09
+### Improved
+Improved mobile support with flex box wrapping
 ## [0.6.1] - 2022/10/09
 - Adjusted default waveforms
 - Optimised the code
