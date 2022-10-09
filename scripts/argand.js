@@ -1,5 +1,18 @@
 const amplitude_scaling_factor = 200
 
+function drawArgandPoints(ctx) {
+
+    wave1Phase = document.getElementById("wave1-phase").value;
+    wave1Amplitude = document.getElementById("wave1-amplitude").value / amplitude_scaling_factor;
+
+    wave2Phase = document.getElementById("wave2-phase").value;
+    wave2Amplitude = document.getElementById("wave2-amplitude").value  / amplitude_scaling_factor;
+
+
+    drawArgandPoint(ctx, wave1Amplitude, wave1Phase, colours.waveform1);
+    drawArgandPoint(ctx, wave2Amplitude, wave2Phase, colours.waveform2);
+}
+
 function drawArgandPoint(ctx, amplitude, argument, colour) {
     // Takes in a polar coordinate and draws the point on the argand chart, ctx
 
@@ -35,7 +48,12 @@ function drawArgandPoint(ctx, amplitude, argument, colour) {
     ctx.setLineDash([]);
 
     // Angle arc
-    ctx.arc(width/2, height/2, 20, 0, -argument, true);
+    if (colour == colours.waveform1) {
+        ctx.arc(width/2, height/2, 30, 0, -argument, true);
+    } else {
+        ctx.arc(width/2, height/2, 20, 0, -argument, true);
+    }
+    
     ctx.stroke();
     
     
@@ -48,15 +66,13 @@ function onArgandClick(event) {
 
     let phaseSlider, amplitudeSlider = null
 
-    if (event.target.id == "wave1-argand"){
-        phaseSlider = document.getElementById("wave1-phase");
-        amplitudeSlider = document.getElementById("wave1-amplitude")
-        colour = colours.waveform1;
-    }
-    if (event.target.id == "wave2-argand"){
+
+    phaseSlider = document.getElementById("wave1-phase");
+    amplitudeSlider = document.getElementById("wave1-amplitude");
+
+    if (event.shiftKey){
         phaseSlider = document.getElementById("wave2-phase");
         amplitudeSlider = document.getElementById("wave2-amplitude")
-        colour = colours.waveform2;
     }
 
 
@@ -70,10 +86,6 @@ function onArgandClick(event) {
 
     mouseX = event.clientX;
     mouseY = event.clientY;
-
-    ctx.beginPath();
-    ctx.strokeStyle = colour;
-    ctx.lineWidth = 3;
 
 
     relativeMouseX = (mouseX - rect.left) / ( rect.right - rect.left) - 0.5
@@ -97,10 +109,10 @@ function onArgandClick(event) {
 
     amplitude = Math.hypot(relativeMouseX, relativeMouseY)
 
-    drawArgandPoint(ctx, amplitude, phaseAngle, colour)
-
     amplitudeSlider.value = amplitude * amplitude_scaling_factor
     phaseSlider.value = phaseAngle
+
+    drawArgandPoints(ctx);
 }
 
 function drawArgand(ctx) {
@@ -150,20 +162,15 @@ function drawArgand(ctx) {
 
 function initArgand() {
     var argand1 = document.getElementById("wave1-argand");
-    var argand2 = document.getElementById("wave2-argand");
     var ctx1 = argand1.getContext("2d");
-    var ctx2 = argand2.getContext("2d");
     drawArgand(ctx1);
-    drawArgand(ctx2);
-    updateArgand1Point();
-    updateArgand2Point();
+    updateArgandPoint();
     
 
     argand1.addEventListener('mousedown', onArgandClick, false);
-    argand2.addEventListener('mousedown', onArgandClick, false);
 }
 
-function updateArgand1Point() {
+function updateArgandPoint() {
     var argand = document.getElementById("wave1-argand");
     var ctx = argand.getContext("2d");
     var width = ctx.canvas.width;
@@ -175,20 +182,5 @@ function updateArgand1Point() {
     amplitude = document.getElementById('wave1-amplitude').value/amplitude_scaling_factor;
     phase = document.getElementById('wave1-phase').value;
 
-    drawArgandPoint(ctx, amplitude, phase, colours.waveform1);
-}
-
-function updateArgand2Point() {
-    var argand = document.getElementById("wave2-argand");
-    var ctx = argand.getContext("2d");
-    var width = ctx.canvas.width;
-    var height = ctx.canvas.height;
-
-    ctx.clearRect(0, 0, width, height);
-    drawArgand(ctx);
-
-    amplitude = document.getElementById('wave2-amplitude').value/amplitude_scaling_factor;
-    phase = document.getElementById('wave2-phase').value;
-
-    drawArgandPoint(ctx, amplitude, phase, colours.waveform2);
+    drawArgandPoints(ctx);
 }

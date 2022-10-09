@@ -39,12 +39,14 @@ function plotFunction(ctx, time, waveNumber) {
         amplitude = document.getElementById("wave1-amplitude").value;
         frequency = document.getElementById("wave1-frequency").value;
         phaseAngle = document.getElementById('wave1-phase').value;
+        colour = colours.waveform1;
     }
     if (waveNumber == 2){
         ctx.strokeStyle = colours.waveform2;
         amplitude = document.getElementById("wave2-amplitude").value;
         frequency = document.getElementById("wave2-frequency").value;
         phaseAngle = document.getElementById('wave2-phase').value;
+        colour = colours.waveform2;
     }
     
     
@@ -57,6 +59,7 @@ function plotFunction(ctx, time, waveNumber) {
 
         ctx.lineTo(x, y + (height/2));
     }
+
     ctx.stroke();
     ctx.save();
 

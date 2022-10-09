@@ -8,11 +8,14 @@
     <script defer src="scripts/graph.js"></script>
     <script defer src="scripts/argand.js"></script>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/checkbox.css">
+    <link rel="stylesheet" href="styles/slider.css">
+    <link rel="stylesheet" href="styles/radio.css">
     <title>BEng Individual Project</title>
     <link rel="icon" type="image/png" href="https://www.york.ac.uk/static/stable/img/favicons/android-chrome-192x192.png"/>
 </head>
 <body onload="init()">
-    <div class="title"><h3 style="margin-left:8%">On-line teaching simulation / visualization prototype</h3></div>
+    <div class="title"><h2 style="margin-left:8%">On-line teaching simulation / visualization prototype</h2></div>
     <canvas id="canvas"></canvas>
 
     <div class="gui">
@@ -21,73 +24,88 @@
         <div class="wave-menu">
             <div class="menu">
                 <h3>Wave 1 </h3>
+                <h4>Left click the argand diagram</h4>
                 <div class="input-menu">
                     
-                    <input type="radio" id="stationary1" name="wave1_direction" value="stationary" class="wave1">
-                    <label for="stationary1">Stationary</label><br>
-                    <input type="radio" id="forward1" name="wave1_direction" value="forward" class="wave1" checked>
-                    <label for="forward1">Forward</label><br>
-                    <input type="radio" id="reverse1" name="wave1_direction" value="reverse" class="wave1">
-                    <label for="reverse1">Reverse</label>
+                    <label class="radio_container">Stationary
+                        <input type="radio" id="stationary1" name="wave1_direction" value="stationary" class="wave1" >
+                        <span class="radiobtn1"></span>
+                    </label>
+
+                    <label class="radio_container">Forward
+                        <input type="radio" id="forward1" name="wave1_direction" value="forward" class="wave1"checked>
+                        <span class="radiobtn1"></span>
+                    </label>
+                    <label class="radio_container">Reverse
+                        <input type="radio" id="Reverse1" name="wave1_direction" value="reverse" class="wave1">
+                        <span class="radiobtn1"></span>
+                    </label>
                 </div>
 
                 <div class="input-menu">
-                    <p>Amplitude: </p>
-                    <input type="range" min="1" max="200" value="50" class="slider" id="wave1-amplitude" oninput="updateArgand1Point()">
+                    <p>Amplitude </p>
+                    <input type="range" min="1" max="200" value="50" class="slider Wave1slider" id="wave1-amplitude" oninput="updateArgandPoint()" style="margin-left:10px">
                 </div>
                 <div class="input-menu">
-                    <p>Phase: </p>
-                    <input type="range" min="0" max="6.2831" value="0" class="slider" id="wave1-phase" step="0.001" oninput="updateArgand1Point()">
+                    <p>Phase </p>
+                    <input type="range" min="0" max="6.2831" value="0" class="slider Wave1slider" id="wave1-phase" step="0.001" oninput="updateArgandPoint()" style="margin-left:43px">
                 </div>
                 <div class="input-menu">
-                    <p>Frequency: </p>
-                    <input type="range" min="0.001" max="0.05" value="0.005" step="0.0000001" class="slider" id="wave1-frequency">
+                    <p>Frequency </p>
+                    <input type="range" min="0.001" max="0.05" value="0.005" step="0.0000001" class="slider Wave1slider" id="wave1-frequency" style="margin-left:10px">
                 </div>
                 <div class="input-menu">
-                    <p>Velocity: </p>
-                    <input type="range" min="0" max="50" value="3" step="0.001" class="slider" id="wave1-velocity">
+                    <p>Velocity </p>
+                    <input type="range" min="0" max="50" value="3" step="0.001" class="slider Wave1slider" id="wave1-velocity" style="margin-left:30px">
                 </div>
 
                 
             </div>
+            
+    </div>
+    </div>
+    <div class="wave-menu"><canvas id="wave1-argand" class="argand" height="400", width="400"></canvas></div>
 
-        <canvas id="wave1-argand" height="400", width="400"></canvas>
-    </div>
-    
-    </div>
+        <div class="wave-menu">
+            <div class="menu">
+                <h3>Wave 2</h3>
+                <h4>Shift click the argand diagram</h4>
+                <div class="input-menu">
 
-    <div class="wave-menu">
-        <canvas id="wave2-argand" height="400", width="400"></canvas>
-        <div class="menu">
-            <h3>Wave 2 </h3>
-            <div class="input-menu">
-                <input type="radio" id="stationary2" name="wave2_direction" value="stationary" class="wave2" checked>
-                <label for="stationary2">Stationary</label><br>
-                <input type="radio" id="forward2" name="wave2_direction" value="forward" class="wave2">
-                <label for="forward2">Forward</label><br>
-                <input type="radio" id="reverse2" name="wave2_direction" value="reverse" class="wave2">
-                <label for="reverse2">Reverse</label>
-            </div>
-    
-            <div class="input-menu">
-                <p>Amplitude: </p>
-                <input type="range" min="1" max="200" value="50" class="slider" id="wave2-amplitude" oninput="updateArgand2Point()">
-            </div>
-            <div class="input-menu">
-                <p>Phase: </p>
-                <input type="range" min="0" max="6.2831" value="0" class="slider" id="wave2-phase" step="0.001" oninput="updateArgand2Point()">
-            </div>
-            <div class="input-menu">
-                <p>Frequency: </p>
-                <input type="range" min="0.001" max="0.05" value="0.005" step="0.0000001" class="slider" id="wave2-frequency">
-            </div>
+                    <label class="radio_container">Stationary
+                        <input type="radio" id="stationary2" name="wave2_direction" value="stationary" class="wave2" checkedd>
+                        <span class="radiobtn2"></span>
+                    </label>
+
+                    <label class="radio_container">Forward
+                        <input type="radio" id="forward2" name="wave2_direction" value="forward" class="wave2">
+                        <span class="radiobtn2"></span>
+                    </label>
+                    <label class="radio_container">Reverse
+                        <input type="radio" id="Reverse2" name="wave2_direction" value="reverse" class="wave2">
+                        <span class="radiobtn2"></span>
+                    </label>
+                </div>
         
-            <div class="input-menu">
-                <p>Velocity: </p>
-                <input type="range" min="1" max="50" value="3" step="0.001" class="slider" id="wave2-velocity">
-            </div>
-    </div>
-        
+                <div class="input-menu">
+                    <p>Amplitude </p>
+                    <input type="range" min="1" max="200" value="50" class="slider Wave2slider" id="wave2-amplitude" oninput="updateArgandPoint()" style="margin-left:10px">
+                </div>
+                <div class="input-menu">
+                    <p>Phase </p>
+                    <input type="range" min="0" max="6.2831" value="0" class="slider Wave2slider" id="wave2-phase" step="0.001" oninput="updateArgandPoint()"  style="margin-left:43px">
+                </div>
+                <div class="input-menu">
+                    <p>Frequency </p>
+                    <input type="range" min="0.001" max="0.05" value="0.005" step="0.0000001" class="slider Wave2slider" id="wave2-frequency" style="margin-left:10px">
+                </div>
+            
+                <div class="input-menu">
+                    <p>Velocity </p>
+                    <input type="range" min="1" max="50" value="3" step="0.001" class="slider Wave2slider" id="wave2-velocity"  style="margin-left:30px">
+                </div>
+        </div>
+            
         </div>
 
     
@@ -96,14 +114,14 @@
     <div class="menu" style="margin-left: 8%">
         
         <h3>Summation Wave</h3>
-        <div class="input-menu">
-            <label for="summation_enabled">Enabled: </label>
-            <input type="checkbox" id="summation_enabled" name="summation_enabled" value="1" checked>
-        </div>
-        <div class="input-menu">
-            <label for="summation_dashed">Dashed: </label>
-            <input type="checkbox" id="summation_dashed" name="summation_dashed" value="1" checked>
-        </div>
+        <label  class="input-menu checkbox_container">Enabled
+            <input type="checkbox" id="summation_enabled" name="summation_enabled" value="1"  checked >
+            <span class="checkmark"></span>
+        </label >
+        <label  class="input-menu checkbox_container">Dashed
+            <input type="checkbox" id="summation_dashed">
+            <span class="checkmark"></span>
+        </label >
     </div>
     </div>  
 
