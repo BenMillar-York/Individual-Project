@@ -12,10 +12,8 @@ This concept was decided upon as regardless of the specific simulation chosen it
 ## [0.6.0] - 2022/10/09
 ### Added
 - Added summation menu
-
 ### Known Issues
 - Summation menu is not aligned with the above wave menu.
-
 ## [0.5.2] - 2022/10/09
 ### Fixed
 - Issue where angle arc was not showing.
